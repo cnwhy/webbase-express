@@ -1,0 +1,15 @@
+# git ignore
+
+#folder
+
+/node_modules/
+/statics/
+/log/
+/local/
+
+#file type
+
+#file
+/*.sh
+/local.js
+!/update.sh

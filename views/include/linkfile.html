@@ -1,0 +1,47 @@
+<meta name="renderer" content="webkit">
+<link rel="stylesheet" type="text/css" href="<%=cdnqida%>/css/jqui-dark/jquery-ui-1.10.4.custom.css">
+<link rel="stylesheet" type="text/css" href="<%=cdnqida%>/css/base.css?<%=resourceVersion%>">
+<script src="<%=cdn%>/share/js/vender/sea.js"></script>
+<script src="<%=cdn%>/share/js/vender/jquery-1.11.1.min.js"></script>
+<script src="<%=cdnqida%>/js/vender/jquery-ui-1.10.4.custom.js"></script>
+<script src="<%=pathJs%>/qidaClass.js?<%=resourceVersion%>"></script>
+<script src="<%=pathJs%>/public.js?<%=resourceVersion%>"></script>
+<script>
+    var qida = qida || {};
+    qida.cdnlink = '<%=cdn%>';
+    qida.baselink = '/api';
+    /*qida.baselink_peixun = '${trainingContextBaseURL}';*/
+    seajs.config({
+        base: '<%=pathJs%>'
+        /* 别名配置 */
+        ,paths : {
+            'libs' : '<%=cdn%>/share/js/vender'
+            ,'app' : '<%=cdn%>/apps/qida-manage'
+        }
+        ,vars: {
+            cdn : '<%=cdn%>'
+            ,cdnt : '<%=cdn%>/apps/qida-manage/'
+        }
+        ,alias: {
+            // 'jquery': 'libs/jquery-1.11.1.min.js'
+            'underscore': 'libs/underscore-min.js'
+            ,'D':'libs/jqueryui.dialog.js'
+            ,'json': 'libs/json2.min.js'
+            ,'md5': 'libs/spark-md5.min.js'
+            ,'webuploader': 'libs/webuploader.js'
+            ,'swfobject': 'libs/swfobject.js'
+            ,'validate': 'libs/v.js'
+            ,'api': './apis.js'
+            ,'public': './public.js'
+        }
+        ,map: [
+            [/^(.*\/apps\/qida\-manage\/.*\.(?:css|js))(?:.*)$/i, '$1?<%=resourceVersion%>']
+            ,[/^(.*\/jqueryui\.dialog\.js)(?:.*)$/i,'$1?<%=resourceVersion%>']
+            ,[/^(.*\/v\.js)(?:.*)$/i,'$1?<%=resourceVersion%>']
+        ]
+        /* 预加载项 */
+        ,preload: [this.JSON ? '' : 'json']
+        /* 路径配置 */
+        ,debug: false
+    })
+</script>

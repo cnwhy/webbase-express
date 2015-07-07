@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title><%=title%> - 企大管理后台</title>
+<%- include ~/include/linkfile.html%>
+<script>seajs.use('clm.member.list');</script>
+</head>
+<body>
+    <%- include('~/include/top.html',{}) %>
+    <div id="global-main">
+        <%- include ~/include/left.html%>
+        <div id="global-main-right">
+        <h1 class="comm-title"><%=title%></h1>
+        <div class="comm-body">
+            <div class="g-o g-padding">
+                <form class="formhash">
+                    <span class="g-inlb g-sp15">关键字：
+                    <input type="text" name="companyName" placeholder="全称/简称/代号/域名">
+                    </span>
+                    <span class="g-inlb g-sp10">
+                        <select name="dateType">
+                            <option value="s">开始时间</option>
+                            <option value="e">结束时间</option>
+                        </select> 
+                    </span>
+                    <span class="g-inlb g-sp15">
+                        <input type="text" id="begintime" class="text-time" name="dateStart" placeholder="" readonly><label for="begintime" class="but-date"><i class="icon-cal"></i></label>
+                        至 
+                        <input type="text" id="endtime" class="text-time" name="dateEnd" placeholder="" readonly><label for="endtime" class="but-date"><i class="icon-cal"></i></label>
+                    </span>
+                    <span class="g-inlb g-sp15">企业类型：
+                    <select name="companyType">
+                        <option value="">全部</option>
+                    </select>
+                    </span>
+                    <span class="g-inlb g-sp15">企业人数：
+                        <select name="companyNum">
+                            <option value="">全部</option>
+                            <option value="1">1-50</option>
+                            <option value="2">51-100</option>
+                            <option value="3">101-300</option>
+                            <option value="4">301-1000</option>
+                            <option value="5">1000以上</option>
+                        </select>
+                    </span>
+                    <span class="g-inlb g-sp15">地域：
+                        <select id="subProvince" name="subProvince">
+                            <option value="">全部</option>
+                        </select>
+                        <select id="subCity" name="subCity">
+                            <option value="">全部</option>
+                        </select>
+                    </span>
+                    <span class="g-inlb g-sp15">行业：
+                        <select id="industry1" name="industry1">
+                            <option value="">全部</option>
+                        </select>
+                        <select id="industry2" name="industry2">
+                            <option value="">全部</option>
+                        </select>
+                    </span>
+                    <span class="g-inlb g-sp15">企业状态：
+                        <select name="useStatus">
+                            <option value="">全部</option>
+                        </select>
+                    </span>
+                    <span class="g-inlb g-sp15">域名：
+                        <select name="isCheckDomainName">
+                            <option value="">全部</option>
+                            <option value="1">有</option>
+                            <option value="0">无</option>
+                        </select>
+                    </span>
+                    <span class="g-inlb g-sp15">所属部门：
+                        <select name="subDepartment">
+                            <option value="">全部</option>
+                        </select>
+                    </span>
+                    <span class="g-inlb g-sp15">企业级别：
+                        <select name="companyLevel">
+                            <option value="">全部</option>
+                        </select>
+                    </span>
+                    <span class="g-inlb">
+                    <button class="but-min but-ok" type="submit"><i class="icon-search"></i>查询</button> 
+                    <button class="but-min but-cancel" type="reset"><i class="icon-trash-1"></i>清除</button>
+                    </span>
+                </form>
+            </div>
+            <div class="g-o"> 
+                <!--批量操作-->
+                <div class="g-padding" id="batchbox">
+                    <a href="list/add" class="but but-add g-sp"><i class="icon-add-circled"></i>新建企业</a> 
+                    <a data-comm="del" id="batchOn" class="but but-comm g-sp"><i class="icon-cancel-circled"></i>删除</a>
+                </div>
+                <div id="ajaxbox"> 
+                    <!--表格-->
+                    <div class="autoMain" style="position: relative;">
+                        <div class="autoBox" style="overflow: auto; height: 221px;">
+                            <table class="g-table">
+                                <thead>
+                                    <tr>
+                                        <th width="30"><div>
+                                        <input type="checkbox" data-checkname='id'>
+                                        </div></th>
+                                        <th><div>企业名称</div></th>
+                                        <th><div>企业类型</div></th>
+                                        <th><div>企业代号</div></th>
+                                        <th><div>个性域名</div></th>
+                                        <th><div>人数</div></th>
+                                        <th><div>分配数</div></th>
+                                        <th><div>行业</div></th>
+                                        <th><div>地域</div></th>
+                                        <th><div>企业级别</div></th>
+                                        <th><div>使用状态</div></th>
+                                        <th><div>公司网址</div></th>
+                                        <th><div>渠道专员</div></th>
+                                        <th><div>所属部门</div></th>
+                                        <th><div>开始时间</div></th>
+                                        <th><div>完成时间</div></th>
+                                        <th><div><a href="javascript:;" class="oderby" title="点击排序" data-orderby="createDate">创建时间<i class="icon-down-dir"></i></a></div></th>
+                                        <th style="width:140px;"><div>操作</div></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--分页-->
+                    <div id="pagenav" class="pagenav g-tr"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <%- include ~/include/bottom.html%>
+</body>
+</html>
