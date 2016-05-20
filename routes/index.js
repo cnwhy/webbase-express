@@ -12,11 +12,8 @@ var _menuCold = ''
 // });
 
 router.get('/', function(req, res, next) {
-	res.render('index.html', _.extend({
-		title: 'CLM管理平台首页'
-		,menuCold:_menuCold
-		,session:req.session
-		,menulist:req.session.menu
+	res.render('index', _.extend({
+		title: 'hello world'
 	}));
 });
 
